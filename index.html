@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Чат</title>
+</head>
+
+<body>
+    <div id="chat-container">
+        <h2>Чатик</h2>
+        <form id="user-form" onsubmit="startChat(event)">
+            <input type="text" id="username" placeholder="Ваше имя" required autocomplete="off" /><br>
+            <input type="email" id="email" placeholder="Ваша почта" required autocomplete="off" /><br>
+            <button type="submit">Начать чат</button>
+        </form>
+        
+        <div id="chat-messages"></div>
+        <div id="message-input-container" style="display:none;">
+            <input type="text" id="message-input" autocomplete="off" placeholder="Введите свое сообщение..." />
+            <button id="send-button" onclick="sendMessage()">Отправить</button>
+        </div>
+    </div>
+
+    <script>
+        var ws;
+        var username;
+        var email;
+
+        function startChat(event) {
+            event.preventDefault();
+            username = document.getElementById("username").value;
+            email = document.getElementById("email").value;
+            document.getElementById("user-form").style.display = "none";
+            document.getElementById("message-input-container").style.display = "flex";
+            document.getElementById("chat-messages").innerHTML += `<b class="chat_user">${username}:</b><div class="start_chat">Начал чат</div>`;
+            connectWebSocket();
+        }
+
+        function connectWebSocket() {
+            var client_id = Date.now();
+            ws = new WebSocket("ws://localhost:8000/ws/" + client_id);
+            ws.onmessage = function(event) {
+                var chatMessages = document.getElementById("chat-messages");
+                var currentTime = new Date().toLocaleTimeString();
+                chatMessages.innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${event.data}</span></div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+        }
+
+        function sendMessage() {
+            var messageInput = document.getElementById("message-input").value;
+            if (messageInput.trim() !== "") {
+                ws.send(username + ": " + messageInput);
+                document.getElementById("message-input").value = "";
+                // var currentTime = new Date().toLocaleTimeString();
+                // document.getElementById("chat-messages").innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${messageInput}</span></div>`;
+                // document.getElementById("message-input").value = "";
+                // document.getElementById("chat-messages").scrollTop = document.getElementById("chat-messages").scrollHeight;
+            }
+        }
+    </script>
+</body>
+
+</html>
