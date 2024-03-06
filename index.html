@@ -41,7 +41,7 @@
 
         function connectWebSocket() {
             var client_id = Date.now();
-            ws = new WebSocket("ws://localhost:8000/ws/" + client_id);
+            ws = new WebSocket("ws://localhost:8000/chat/ws/" + client_id);
             ws.onmessage = function(event) {
                 var chatMessages = document.getElementById("chat-messages");
                 var currentTime = new Date().toLocaleTimeString();
@@ -52,8 +52,14 @@
 
         function sendMessage() {
             var messageInput = document.getElementById("message-input").value;
+            var messageData = {
+                user_name: username,
+                user_email: email,
+                message: messageInput
+            };
+
             if (messageInput.trim() !== "") {
-                ws.send(username + ": " + messageInput);
+                ws.send(JSON.stringify(messageData));
                 document.getElementById("message-input").value = "";
                 // var currentTime = new Date().toLocaleTimeString();
                 // document.getElementById("chat-messages").innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${messageInput}</span></div>`;
