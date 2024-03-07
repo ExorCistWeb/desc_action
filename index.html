@@ -24,50 +24,7 @@
         </div>
     </div>
 
-    <script>
-        var ws;
-        var username;
-        var email;
-
-        function startChat(event) {
-            event.preventDefault();
-            username = document.getElementById("username").value;
-            email = document.getElementById("email").value;
-            document.getElementById("user-form").style.display = "none";
-            document.getElementById("message-input-container").style.display = "flex";
-            document.getElementById("chat-messages").innerHTML += `<b class="chat_user">${username}:</b><div class="start_chat">Начал чат</div>`;
-            connectWebSocket();
-        }
-
-        function connectWebSocket() {
-            var client_id = Date.now();
-            ws = new WebSocket("ws://localhost:8000/chat/ws/" + client_id);
-            ws.onmessage = function(event) {
-                var chatMessages = document.getElementById("chat-messages");
-                var currentTime = new Date().toLocaleTimeString();
-                chatMessages.innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${event.data}</span></div>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            };
-        }
-
-        function sendMessage() {
-            var messageInput = document.getElementById("message-input").value;
-            var messageData = {
-                user_name: username,
-                user_email: email,
-                message: messageInput
-            };
-
-            if (messageInput.trim() !== "") {
-                ws.send(JSON.stringify(messageData));
-                document.getElementById("message-input").value = "";
-                // var currentTime = new Date().toLocaleTimeString();
-                // document.getElementById("chat-messages").innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${messageInput}</span></div>`;
-                // document.getElementById("message-input").value = "";
-                // document.getElementById("chat-messages").scrollTop = document.getElementById("chat-messages").scrollHeight;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
