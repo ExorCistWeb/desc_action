@@ -1,7 +1,7 @@
-var ws;
-var username;
-var email;
-var chatMessages;  // Объявляем переменную в глобальной области видимости
+let ws;
+let username;
+let email;
+let chatMessages;  // Объявляем переменную в глобальной области видимости
 
 function startChat(event) {
     event.preventDefault();
@@ -14,18 +14,19 @@ function startChat(event) {
 }
 
 function connectWebSocket() {
-    var cookie = 'some_cookie';
-    ws = new WebSocket("ws://localhost:8000/chat/ws/" + cookie);
+    let cookie = 'some_cookie';
+    ws = new WebSocket("ws://localhost:8001/chat/ws/" + cookie);
     ws.onmessage = function(event) {
-        var currentTime = new Date().toLocaleTimeString();
-        chatMessages.innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content"> ${event.data}</span></div>`;
+        let currentTime = new Date().toLocaleTimeString();
+        chatMessages = document.getElementById("chat-messages");
+        chatMessages.innerHTML += `<div class="message sent"><span class="timestamp">${currentTime}</span><span class="message-content">${event.data}</span></div>`;
         chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 }
 
 function sendMessage() {
-    var messageInput = document.getElementById("message-input").value;
-    var messageData = {
+    let messageInput = document.getElementById("message-input").value;
+    let messageData = {
         user_name: username,
         user_email: email,
         message: messageInput
@@ -36,4 +37,3 @@ function sendMessage() {
         document.getElementById("message-input").value = "";
     }
 }
-
