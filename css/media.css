@@ -64,6 +64,42 @@
            width: 32px;
            height: 32px
        }
+       h1 {
+           font-size: 34px;
+       }
+       .main_info .action_span {
+           font-size: 24px;
+       }
+       .btn_more {
+           font-size: 18px;
+           width: 220px;
+           height: 50px;
+       }
+       .btn_more_desc {
+           font-size: 16px;
+       }
+       .btn_more_desc img {
+           width: 28px;
+       }
+       .points_box {
+           gap: 18px;
+       }
+       .points_box img {
+           width: 60px;
+           height: 60px;
+       }
+       .points_box p {
+           font-size: 18px;
+       }
+       .day_title {
+           font-size: 18px;
+       }
+       .day_end {
+           font-size: 44px;
+       }
+       h2 {
+           font-size: 32px;
+       }
    }
    
    @media (max-width:768px) {
