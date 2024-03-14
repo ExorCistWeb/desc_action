@@ -4,9 +4,60 @@
    
    @media (max-width:1380px) {}
    
-   @media (max-width:1280px) {}
+   @media (max-width:1280px) {
+       .wrapper {
+           padding: 0 20px;
+       }
+       .main_img {
+           right: 20px;
+       }
+       .main_info p {
+           max-width: 575px;
+       }
+       .adv_cont {
+           max-width: 340px;
+       }
+       h3 {
+           font-size: 26px;
+       }
+       p {
+           font-size: 18px;
+       }
+       .adv_box img {
+           width: 45px;
+           height: 45px;
+       }
+   }
    
-   @media (max-width:1080px) {}
+   @media (max-width:1080px) {
+       h1 {
+           max-width: 765px;
+       }
+       .main_img {
+           width: 300px;
+           top: 180px;
+       }
+       .main_img img {
+           width: 100%;
+       }
+       .main_img::after {
+           display: none;
+           content: ' ';
+       }
+       .adv_phone {
+           bottom: 100px;
+       }
+       .adv_phone img {
+           height: 500px;
+           width: auto;
+       }
+       .adv_cont {
+           max-width: 315px;
+       }
+       .adv_info {
+           max-width: 255px;
+       }
+   }
    
    @media (max-width:960px) {
        .footer_massage_flex a svg {

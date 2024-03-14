@@ -41,6 +41,21 @@
 </head>
 
 <body>
+    <button id="toggle-chat-btn">Чат</button>
+    <div id="chat-container" style="display:none;">
+        <h2>Чатик</h2>
+        <form id="user-form" onsubmit="startChat(event)">
+            <input type="text" id="username" placeholder="Ваше имя" required autocomplete="off" /><br>
+            <input type="email" id="email" placeholder="Ваша почта" required autocomplete="off" /><br>
+            <button type="submit">Начать чат</button>
+        </form>
+
+        <div id="chat-messages"></div>
+        <div id="message-input-container" style="display:none;">
+            <input type="text" id="message-input" autocomplete="off" placeholder="Введите свое сообщение..." />
+            <button id="send-button" onclick="sendMessage()">Отправить</button>
+        </div>
+    </div>
     <header>
         <div class="wrapper">
             <div class="header">
