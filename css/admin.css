@@ -1,0 +1,30 @@
+input{
+    width: 500px;
+    height: 30px;
+}
+button{
+    height: 35px;
+}
+.chat {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.messages {
+    text-align: left;
+    max-height: 300px; /* Например, чтобы ограничить высоту сообщений и добавить прокрутку */
+    overflow-y: auto; /* Добавим вертикальную прокрутку при необходимости */
+}
+p{
+    font-size: 20px;
+}
+.user-message{
+    margin-bottom: 5px;
+    height: 42px;
+    border: 2px solid;
+    display: flex;
+}

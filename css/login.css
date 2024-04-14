@@ -1,0 +1,43 @@
+h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    text-align: center; /* Для центрирования внутренних элементов */
+}
+
+.main-text {
+    background-color: #7CBA90;
+    height: 70px;
+    border: 2px solid;
+    display: flex; /* Используем flexbox для выравнивания элементов по центру */
+    justify-content: center; /* Выравниваем содержимое по центру */
+    align-items: center; /* Выравниваем по вертикали по центру */
+}
+form {
+    border: 2px solid;
+    border-radius: 12px;
+    background-color: #7CBA90;
+    margin-top: 200px;
+}
+input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 30px;
+    margin-left: auto; /* Чтобы выровнять входные поля по центру */
+    margin-right: auto; /* Чтобы выровнять входные поля по центру */
+}
+button {
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto; /* Чтобы выровнять кнопку по центру */
+    margin-right: auto; /* Чтобы выровнять кнопку по центру */
+    height: 30px;
+    width: 80px;
+}

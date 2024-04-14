@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESC Studio - Admin chat panel</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-text">
+            <h1>DESC Studio. Вход в админ панель чата</h1>
+        </div>
+        <form id="loginForm" action="http://127.0.0.1:8000/auth/login/" method="post">
+            <input type="text" name="email" id="emailInput" placeholder="email">
+            <input type="password" name="password" id="passwordInput" placeholder="password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

@@ -17,7 +17,7 @@ function startChat(event) {
 }
 
 function connectWebSocket() {
-    ws = new WebSocket("ws://localhost:8000/chat/ws/");
+    ws = new WebSocket("ws://localhost:8000/chat/ws/" + email);
     ws.onmessage = function(event) {
         let currentTime = new Date().toLocaleTimeString();
         chatMessages = document.getElementById("chat-messages");
@@ -68,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     // Запрос на сервер за последними сообщениями пользователя
     try {
-        fetch(`http://127.0.0.1:8000/admin/last_message/?user_email=${email}`)
+        const offset = 0;
+        fetch(`http://127.0.0.1:8000/chat/user_last_messages/?user_email=${email}&offset=${offset}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
