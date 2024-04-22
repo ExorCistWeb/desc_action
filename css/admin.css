@@ -36,11 +36,18 @@ p{
 .message{
     border: 2px solid;
     width: 400px;
-    height: 90px;
+    min-height: 60px; /* Минимальная высота, чтобы сохранить начальный вид */
     margin-bottom: 12px;
     margin-left: 5px;
     background: linear-gradient(to right, #900be3, #a8a3ff);
-    
+    overflow: hidden; /* Добавляем overflow: hidden, чтобы контейнер принимал высоту содержимого */
+}
+
+.message p{
+    overflow-wrap: break-word;
+    font-size: 15px;
+    margin-top: 1px;
+    margin: 2px;
 }
 .admin-message{
     border: 2px solid;
@@ -55,7 +62,8 @@ p{
     font-size: 15px;
     margin-top: 1px;
 }
-.message p {
-    font-size: 15px;
-    margin-top: 1px;
+
+.answer-button{
+    text-align: right;
+    text-decoration: underline;
 }
