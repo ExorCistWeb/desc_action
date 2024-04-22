@@ -23,13 +23,12 @@ function connectToWebSocket(){
         mainDiv = document.getElementById('messages')
         const user_message = JSON.parse(event.data)
         console.log(user_message)
-        mainDiv.innerHTML += `<div class="user-message"><p>${user_message.message}</p><div class=${user_message.user_email}><p>${user_message.user_email}</p></div></div>`
+        mainDiv.innerHTML += `<div class=\"message\"><p>${user_message.user_email}</p> <p>${user_message.message}</p></div>`
+        
     };
 }
 
 function testClick(){
-
-
     // Выполняем GET запрос с заголовком Authorization
     fetch('http://127.0.0.1:8000/auth/users/me', {
     method: 'GET',
@@ -51,3 +50,4 @@ function testClick(){
 
 // const mainDiv = document.getElementById('messages')
 // mainDiv.innerHTML += "<div class=\"user-message\"><p>text</p></div>"
+
