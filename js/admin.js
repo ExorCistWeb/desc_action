@@ -23,7 +23,8 @@ function connectToWebSocket(){
         mainDiv = document.getElementById('messages')
         const user_message = JSON.parse(event.data)
         console.log(user_message)
-        mainDiv.innerHTML += `<div class=\"message\"><p>${user_message.user_email}</p> <p>${user_message.message}</p></div>`
+        // user_message.user_email user_message.message
+        mainDiv.innerHTML += `<div class= "message"><p class="answer-button">Ответить </p> <p>${user_message.user_email}</p> <p>${user_message.message}</p> </div>`
         
     };
 }

@@ -38,6 +38,7 @@ p{
     width: 400px;
     min-height: 60px; /* Минимальная высота, чтобы сохранить начальный вид */
     margin-bottom: 12px;
+    margin-top: 12px;
     margin-left: 5px;
     background: linear-gradient(to right, #900be3, #a8a3ff);
     overflow: hidden; /* Добавляем overflow: hidden, чтобы контейнер принимал высоту содержимого */
@@ -45,25 +46,32 @@ p{
 
 .message p{
     overflow-wrap: break-word;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 1px;
     margin: 2px;
 }
 .admin-message{
     border: 2px solid;
     width: 400px;
-    height: 60px;
+    min-height: 60px; /* Минимальная высота, чтобы сохранить начальный вид */
     margin-bottom: 12px;
-    margin-left: 250px;
+    margin-top: 12px;
+    margin-left: 255px;
     background: linear-gradient(to right, #900be3, #a8a3ff);
+    overflow: hidden; /* Добавляем overflow: hidden, чтобы контейнер принимал высоту содержимого */
     
 }
 .admin-message p{
-    font-size: 15px;
+    overflow-wrap: break-word;
+    font-size: 20px;
     margin-top: 1px;
+    margin: 2px;
 }
 
 .answer-button{
     text-align: right;
     text-decoration: underline;
+}
+.answer-button:hover{
+    cursor: pointer;
 }

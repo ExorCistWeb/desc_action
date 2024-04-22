@@ -751,6 +751,8 @@ h2 {
     min-width: 100px;
     overflow-y: auto;
     margin-bottom: 20px;
+    max-height: 350px; /* Например, чтобы ограничить высоту сообщений и добавить прокрутку */
+    
 }
 
 #message-input-container {
@@ -774,6 +776,7 @@ h2 {
     width: 70%;
     margin: 0;
     height: 100%;
+    margin-top: 20px;
 }
 
 #send-button {
@@ -788,6 +791,7 @@ h2 {
     max-width: 30%;
     height: 100%;
     margin: 0;
+    margin-top: 20px;
 }
 
 .message {
