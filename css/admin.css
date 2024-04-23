@@ -114,3 +114,6 @@ p{
     margin: 5px;
     overflow-wrap: break-word; /* для современных браузеров */
 }
+.user-email-answer{
+    margin: 1px;
+}

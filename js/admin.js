@@ -20,7 +20,7 @@ let currentUserEmail;
 
 // Находим родительский элемент, который существует на момент загрузки страницы
 const messagesContainer = document.getElementById('messages');
-
+const userEmail = document.querySelector('.user-email-answer')
 // Добавляем обработчик события 'click' к родительскому элементу
 messagesContainer.addEventListener('click', function(event) {
     // Проверяем, был ли клик на элементе с классом 'answer-button'
@@ -30,7 +30,8 @@ messagesContainer.addEventListener('click', function(event) {
 
         // Находим все элементы <p> внутри родительского элемента
         const paragraphs = messageContainer.querySelectorAll('p');
-        const currentUserEmail = paragraphs[1].textContent;
+        currentUserEmail = paragraphs[1].textContent;
+        userEmail.textContent = `Ответь на сообщение пользователя ${currentUserEmail}`
         console.log(currentUserEmail);
     }
 });
