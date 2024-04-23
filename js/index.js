@@ -81,10 +81,17 @@ document.addEventListener("DOMContentLoaded", function() {
             messages = data.data
             console.log(data.data); // Вывод полученных данных в консоль для проверки
             // const chatMessages = document.getElementById("chat-messages");
+            chatMessages = document.getElementById("chat-messages");
             messages.forEach(element => {
-                chatMessages = document.getElementById("chat-messages");
-                chatMessages.innerHTML += `<div class="message sent"><span class="message-content">${element}</span></div>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                if (element[1] == 'user'){
+                    chatMessages.innerHTML += `<div class="message sent"><span class="message-content">${username}: ${element[0]}</span></div>`;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+                else{
+                    chatMessages.innerHTML += `<div class="message sent"><span class="message-content"">Тех.поддержка: ${element[0]}</span></div>`;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+                
             });
         })
         .catch(error => {
