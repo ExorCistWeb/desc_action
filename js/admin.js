@@ -1,5 +1,25 @@
 let headers;
 let mainDiv;
+let currentUserEmail;
+// Находим все элементы с классом 'answer-button'
+const answerButtons = document.querySelectorAll('.answer-button');
+
+// Проходим по каждому элементу с классом 'answer-button'
+answerButtons.forEach(button => {
+    // Добавляем обработчик события 'click' к текущему элементу
+    button.addEventListener('click', function() {
+        // Находим родительский элемент с классом 'message'
+        const messageContainer = this.closest('.message');
+
+        // Находим все элементы <p> внутри родительского элемента
+        const paragraphs = messageContainer.querySelectorAll('p');
+        currentUserEmail = paragraphs[1].textContent
+        console.log(currentUserEmail)
+    });
+});
+
+
+
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -48,7 +68,4 @@ function testClick(){
     console.error('There was a problem with your fetch operation:', error);
     });
 }
-
-// const mainDiv = document.getElementById('messages')
-// mainDiv.innerHTML += "<div class=\"user-message\"><p>text</p></div>"
 
