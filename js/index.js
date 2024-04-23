@@ -2,7 +2,16 @@ let ws;
 let username;
 let email;
 let chatMessages; // Объявляем переменную в глобальной области видимости
+const reviewButton = document.getElementById('reviewButton')
+const reviewForm = document.getElementById('review-window')
+const closeButton = document.getElementById('close-button')
 
+reviewButton.addEventListener('click', function(){
+    reviewForm.style.display = 'block';
+})
+closeButton.addEventListener('click', function(){
+    reviewForm.style.display = 'none'
+})
 function startChat(event) {
     event.preventDefault();
     username = document.getElementById("username").value;
@@ -88,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
                 else{
-                    chatMessages.innerHTML += `<div class="message sent"><span class="message-content"">Тех.поддержка: ${element[0]}</span></div>`;
+                    chatMessages.innerHTML += `<div class="message sent"><span class="message-content"">Тех.поддержка:${element[0]}</span></div>`;
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
                 
