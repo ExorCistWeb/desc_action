@@ -1,26 +1,12 @@
 let headers;
 let mainDiv;
 let currentUserEmail;
-// Находим все элементы с классом 'answer-button'
-// const answerButtons = document.querySelectorAll('.answer-button');
-
-// // Проходим по каждому элементу с классом 'answer-button'
-// answerButtons.forEach(button => {
-//     // Добавляем обработчик события 'click' к текущему элементу
-//     button.addEventListener('click', function() {
-//         // Находим родительский элемент с классом 'message'
-//         const messageContainer = this.closest('.message');
-
-//         // Находим все элементы <p> внутри родительского элемента
-//         const paragraphs = messageContainer.querySelectorAll('p');
-//         currentUserEmail = paragraphs[1].textContent
-//         console.log(currentUserEmail)
-//     });
-// });
-
-// Находим родительский элемент, который существует на момент загрузки страницы
 const messagesContainer = document.getElementById('messages');
 const userEmail = document.querySelector('.user-email-answer')
+const sendMessageButton = document.getElementById('send-message')
+
+// Находим родительский элемент, который существует на момент загрузки страницы
+
 // Добавляем обработчик события 'click' к родительскому элементу
 messagesContainer.addEventListener('click', function(event) {
     // Проверяем, был ли клик на элементе с классом 'answer-button'
@@ -37,8 +23,6 @@ messagesContainer.addEventListener('click', function(event) {
 });
 
 
-
-
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -52,6 +36,44 @@ document.addEventListener("DOMContentLoaded", function() {
     // Создаем объект Headers и добавляем в него заголовок Authorization
     headers = new Headers();
     headers.append('Authorization', `Bearer ${token}`);
+
+    try {
+        const offset = 0;
+        fetch(`http://127.0.0.1:8000/admin/last_message/?offset=${offset}`, { 
+            method: 'GET',
+            headers: headers
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Обработка полученных данных
+            let messages = data['data']
+            mainDiv = document.getElementById('messages')
+            if (messages.length > 0){
+                messages.forEach(element => {
+                    if (element[2] == 'user'){
+                        mainDiv.innerHTML += `<div class= "message"><p class="answer-button">Ответить </p> <p>${element[0]}</p> <p>${element[1]}</p> </div>`
+                    }
+                    else{
+                        mainDiv.innerHTML += `<div class="admin-message"> <p>Ответ пользователю: ${element[0]}</p> <p>Сообщение: ${element[1]}</p> </div>`
+                    }
+                });
+            }
+
+        })
+        .catch(error => {
+            console.error('There was a problem with the request:', error);
+        });
+    
+    } catch (error) {
+        console.error('Error fetching last messages:', error);
+    }
+
+
     connectToWebSocket()
 });
 
@@ -67,6 +89,22 @@ function connectToWebSocket(){
         
     };
 }
+sendMessageButton.addEventListener('click', function(){
+    if (!currentUserEmail){
+        return;
+        document.getElementById('message-input').value = ""
+    }
+    let messageInput = document.getElementById('message-input').value;
+    let messageData = {
+        'message': messageInput,
+        'user_email': currentUserEmail
+    }
+    ws.send(JSON.stringify(messageData))
+    document.getElementById('message-input').value = ""
+    mainDiv.innerHTML += `<div class="admin-message"> <p>Ответ пользователю: ${currentUserEmail}</p> <p>Сообщение: ${messageInput}</p> </div>`
+    userEmail.textContent = ""
+})
+
 
 function testClick(){
     // Выполняем GET запрос с заголовком Authorization
