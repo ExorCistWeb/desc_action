@@ -2,21 +2,39 @@ let headers;
 let mainDiv;
 let currentUserEmail;
 // Находим все элементы с классом 'answer-button'
-const answerButtons = document.querySelectorAll('.answer-button');
+// const answerButtons = document.querySelectorAll('.answer-button');
 
-// Проходим по каждому элементу с классом 'answer-button'
-answerButtons.forEach(button => {
-    // Добавляем обработчик события 'click' к текущему элементу
-    button.addEventListener('click', function() {
+// // Проходим по каждому элементу с классом 'answer-button'
+// answerButtons.forEach(button => {
+//     // Добавляем обработчик события 'click' к текущему элементу
+//     button.addEventListener('click', function() {
+//         // Находим родительский элемент с классом 'message'
+//         const messageContainer = this.closest('.message');
+
+//         // Находим все элементы <p> внутри родительского элемента
+//         const paragraphs = messageContainer.querySelectorAll('p');
+//         currentUserEmail = paragraphs[1].textContent
+//         console.log(currentUserEmail)
+//     });
+// });
+
+// Находим родительский элемент, который существует на момент загрузки страницы
+const messagesContainer = document.getElementById('messages');
+
+// Добавляем обработчик события 'click' к родительскому элементу
+messagesContainer.addEventListener('click', function(event) {
+    // Проверяем, был ли клик на элементе с классом 'answer-button'
+    if (event.target.classList.contains('answer-button')) {
         // Находим родительский элемент с классом 'message'
-        const messageContainer = this.closest('.message');
+        const messageContainer = event.target.closest('.message');
 
         // Находим все элементы <p> внутри родительского элемента
         const paragraphs = messageContainer.querySelectorAll('p');
-        currentUserEmail = paragraphs[1].textContent
-        console.log(currentUserEmail)
-    });
+        const currentUserEmail = paragraphs[1].textContent;
+        console.log(currentUserEmail);
+    }
 });
+
 
 
 
