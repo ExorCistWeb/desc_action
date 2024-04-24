@@ -925,9 +925,16 @@ textarea::placeholder{
     cursor: pointer;
 }
 .submit-button{
-    margin-top: 40px;
+    margin-top: 30px;
     margin-left: 50%;
     transform: translateX(-50%);
 }
-
+.success-message{
+    background-color: #7CBA90;
+    padding: 5px;
+    display: none;
+}
+.success-message p{
+    color: black;
+}
 /* End chat */

@@ -7,7 +7,7 @@ const reviewButton = document.getElementById('reviewButton')
 const reviewForm = document.getElementById('review-window')
 const closeButton = document.getElementById('close-button')
 const reviewText = document.getElementById('review-text')
-
+const successMessage = document.querySelector('.success-message')
 
 const formData = document.getElementById('main-form')
 formData.addEventListener('submit', function(event){
@@ -20,7 +20,6 @@ formData.addEventListener('submit', function(event){
         "user_star_rating": star_number
     }
     
-    console.log(jsonn)
     fetch(formData.action, {
         method: "POST",
         body: JSON.stringify(jsonn),
@@ -35,7 +34,7 @@ formData.addEventListener('submit', function(event){
         throw new Error('Network response was not ok.');
     })
     .then(data => {
-        console.log(data)
+        successMessage.style.display = 'block';
     })
     .catch(error => {
         console.log(error)

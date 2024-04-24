@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let reviews = data['data']
             for(let key in reviews){
                 console.log(key)
-                reviewsDiv.innerHTML += `<div class="user-review"><p>Имя пользователя: ${reviews[key]['user_name']}</p><p>email пользователя: ${key}</p><p>Отзыв: ${reviews[key]['user_review']}</p><p>Количество звезд: ${reviews[key]['user_star_rating']}</p></div>`
+                reviewsDiv.innerHTML += `<div class="user-review"><p>Имя пользователя: ${reviews[key]['user_name']}</p><p>email пользователя: ${reviews[key]['user_email']}</p><p>Отзыв: ${reviews[key]['user_review']}</p><p>Количество звезд: ${reviews[key]['user_star_rating']}</p></div>`
             }
         })
         .catch(error => {
