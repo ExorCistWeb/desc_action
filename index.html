@@ -277,16 +277,23 @@
             </div>
         </div>
     </footer>
+    <!-- review form -->
     <div class="review-window" id="review-window">
         <div class="close-button" id = "close-button">
             <img src="https://ikonki.svgpng.ru/wp-content/uploads/2021/12/Krestiksvgpng.ru_.png" alt="" class="close">
         </div>
-        <form action="">
+        <form action="http://127.0.0.1:8000/chat/add_review" id="main-form">
             <div class="review-form">
-                <input type="text" name="" id="" placeholder="Ваше имя/почта">
-                <input type="texta" name="" id="" placeholder="Отзыв о техподдержке">
-                <input type="text" name="" id="">
+                <textarea name="" id="review-text" cols="30" rows="10" placeholder="  Отзыв о техподдержке"></textarea>
             </div>
+            <div class="stars">
+                <span class="yellow-star">★</span>
+                <span class="yellow-star">★</span>
+                <span class="yellow-star">★</span>
+                <span class="yellow-star">★</span>
+                <span class="yellow-star">★</span>
+            </div>
+            <input type="submit" value="Отправить отзыв" class="submit-button">    
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

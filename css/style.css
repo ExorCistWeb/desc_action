@@ -871,13 +871,16 @@ h2 {
 
 .review-window{
     position: fixed;
+    background-color: white;
+    z-index: 999999;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
     /* display: block; */
     border: 1px solid;
-    border-color: #007bff;
+    border-color: rgb(187, 187, 187);
+    border-radius: 20px;
     padding: 150px;
     background-color: white;
 }
@@ -902,6 +905,29 @@ input{
 .close{
     width: 40px;
 }
-
+textarea{
+    resize: none;
+    height: 90px;
+    font-size: 15px;
+}
+textarea::placeholder{
+    font-size: 15px;
+}
+.stars{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.yellow-star{
+    font-size: 25px;
+}
+.yellow-star:hover{
+    color: yellow;
+    cursor: pointer;
+}
+.submit-button{
+    margin-top: 40px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
 
 /* End chat */

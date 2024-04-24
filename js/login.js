@@ -1,5 +1,5 @@
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Отменяем стандартное поведение формы
+     event.preventDefault(); // Отменяем стандартное поведение формы
 
     const formData = new FormData(this); // Получаем данные формы
     const errorMessage = document.getElementById('error-msg')

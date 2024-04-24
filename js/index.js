@@ -2,9 +2,64 @@ let ws;
 let username;
 let email;
 let chatMessages; // Объявляем переменную в глобальной области видимости
+let star_number;
 const reviewButton = document.getElementById('reviewButton')
 const reviewForm = document.getElementById('review-window')
 const closeButton = document.getElementById('close-button')
+const reviewText = document.getElementById('review-text')
+
+
+const formData = document.getElementById('main-form')
+formData.addEventListener('submit', function(event){
+    // Убираем стандартное поведение формы
+    event.preventDefault();
+    const jsonn = {
+        "user_name": username,
+        "user_email": email,
+        "user_reviews": reviewText.value,
+        "user_star_rating": star_number
+    }
+    
+    console.log(jsonn)
+    fetch(formData.action, {
+        method: "POST",
+        body: JSON.stringify(jsonn),
+        headers: {
+            "Content-Type": "application/json" // Указываем тип контента как application/json
+        },
+    })
+    .then(response => {
+        if (response.ok){
+            return response.text()
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
+
+const stars = document.querySelectorAll('.yellow-star');
+
+stars.forEach(star => {
+    star.addEventListener('click', function (event) {
+        // Ваш обработчик клика здесь
+        star_number = Array.from(stars).indexOf(event.target) + 1
+        for(let i = 0; i < stars.length; i++){
+            stars[i].style.color = 'black'
+        }
+        console.log(star_number)
+        for(let i = 0; i < star_number; i++){
+            stars[i].style.color = 'yellow'
+        }
+
+    });
+});
+
+
 
 reviewButton.addEventListener('click', function(){
     reviewForm.style.display = 'block';
