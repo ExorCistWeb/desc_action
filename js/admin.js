@@ -4,7 +4,7 @@ let currentUserEmail;
 const messagesContainer = document.getElementById('messages');
 const userEmail = document.querySelector('.user-email-answer')
 const sendMessageButton = document.getElementById('send-message')
-
+const reviewsDiv = document.getElementById('users-reviews')
 // Находим родительский элемент, который существует на момент загрузки страницы
 
 // Добавляем обработчик события 'click' к родительскому элементу
@@ -64,6 +64,34 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
 
+        })
+        .catch(error => {
+            console.error('There was a problem with the request:', error);
+        });
+    
+    } catch (error) {
+        console.error('Error fetching last messages:', error);
+    }
+
+    try {
+        let offset = 0;
+        fetch(`http://127.0.0.1:8000/admin/user_reviews?offset=${offset}`, { 
+            method: 'GET',
+            headers: headers
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Обработка полученных данных
+            let reviews = data['data']
+            for(let key in reviews){
+                console.log(key)
+                reviewsDiv.innerHTML += `<div class="user-review"><p>Имя пользователя: ${reviews[key]['user_name']}</p><p>email пользователя: ${key}</p><p>Отзыв: ${reviews[key]['user_review']}</p><p>Количество звезд: ${reviews[key]['user_star_rating']}</p></div>`
+            }
         })
         .catch(error => {
             console.error('There was a problem with the request:', error);
